@@ -1,0 +1,47 @@
+2.8.27 (2012-03-06)
+    - Vqmod support added
+2.8.26 (2012-03-05)
+    - Opencart 1.5.2.1 support added
+2.8.22 (2012-02-20)
+    - Promotional tags support added.
+    - Added support of the themes with built-in cloud zoom 
+2.8.20 (2012-02-17)
+    - Added support for SEO-friendly urls
+2.8.19 (2012-02-16)
+    - Added support for Ayelshop
+2.8.18 (2012-02-15)
+    - Added support for Product Label module
+2.8 (2011-12-08)
+    - Added support of boxes for new OpenCart versions (1.5.1.3)
+	- Added MagicScroll support on boxes for new OpenCart versions
+	- Added support of non-default admin folder path without module reinstall
+	- Changed manual installation instructions
+	- Updated back-end module page design
+	- Fixed some minor bugs
+2.7 (2011-06-22)
+    - Added support of non-default admin folder path, that can be changed in new versions of OpenCart
+2.6 (2011-06-20)
+    - Added product page and category page support for new OpenCart versions (v1.5.0.4 ; v1.5.0.5)
+2.5 (2011-06-14)
+    - Magic360 and Magic360Plus are now supported by OpenCart module
+2.4 (2011-04-14)
+    - New back-end module settings page design
+2.3 (2011-03-28)
+    - Fixed bug with multilanguage module use
+2.2 (2011-01-17)
+    - Added Magic Scroll support
+2.1 (2010-11-15)
+    - Fixed: PHP Notice in admin area.
+    - Fixed: module not working on Bestsellers products.
+    - Fixed: module not working on all Category lists.
+    - Fixed: headers doesn't include in some cases.
+2.0 (2010-09-23)
+    - Added boxes support
+    - Added support of boxes 'home' position
+    - Added support of MagicSlideShow tool
+1.2 (2010-09-07)
+    - Now works with OpenCart v1.4.9
+1.1 (2010-06-08)
+    - Changes to caption-source parameter to allow multiple sources.
+1.0 (2010-06-01)
+    - Opencart module created
