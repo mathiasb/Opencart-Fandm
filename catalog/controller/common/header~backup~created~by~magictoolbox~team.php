@@ -1,10 +1,4 @@
-<?php
-	global $aFolder;
-	if (!defined('HTTP_ADMIN')) define('HTTP_ADMIN','admin');
-	$aFolder = preg_replace('/.*\/([^\/].*)\//is','$1',HTTP_ADMIN);
-	if (!isset($GLOBALS['magictoolbox']['magicslideshow']) && !isset($GLOBALS['magicslideshow_module_loaded'])) {
-		//include $aFolder.'/controller/module/magictoolbox/module.php';
-	include (preg_match("/components\/com_ayelshop\/opencart\//ims",__FILE__)?'components/com_ayelshop/opencart/':'').$aFolder.'/controller/module/magictoolbox/module.php';}   
+<?php   
 class ControllerCommonHeader extends Controller {
 	protected function index() {
 		$this->data['title'] = $this->document->getTitle();
@@ -119,12 +113,6 @@ class ControllerCommonHeader extends Controller {
 		}
 		
     	$this->render();
-		if($this->config->get('magicslideshow_status') != 0) {
-			$tool  = magicslideshow_load_core_class($this);
-			if(use_effect_on($tool)) {
-				$this->output = set_headers($this->output);
-			}
-		}
 	} 	
 }
 ?>

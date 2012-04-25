@@ -1,17 +1,10 @@
 <?php
-						global $aFolder;
-                        if (!defined('HTTP_ADMIN')) define('HTTP_ADMIN','admin');
-						$aFolder = preg_replace('/.*\/([^\/].*)\//is','$1',HTTP_ADMIN);
-						if (!isset($GLOBALS['magictoolbox']['magicslideshow']) && !isset($GLOBALS['magicslideshow_module_loaded'])) {
-                            //include $aFolder.'/controller/module/magictoolbox/module.php'; 
-                            include (preg_match("/components\/com_ayelshop\/opencart\//ims",__FILE__)?'components/com_ayelshop/opencart/':'').$aFolder.'/controller/module/magictoolbox/module.php';
-                        };
-class ControllerModuleBestSeller extends Controller {
+class ControllerModuleSpecial extends Controller {
 	protected function index($setting) {
-		$this->language->load('module/bestseller');
+		$this->language->load('module/special');
  
       	$this->data['heading_title'] = $this->language->get('heading_title');
-				
+
 		$this->data['button_cart'] = $this->language->get('button_cart');
 		
 		$this->load->model('catalog/product');
@@ -19,34 +12,41 @@ class ControllerModuleBestSeller extends Controller {
 		$this->load->model('tool/image');
 
 		$this->data['products'] = array();
-
-		$results = $this->model_catalog_product->getBestSellerProducts($setting['limit']);
 		
+		$data = array(
+			'sort'  => 'pd.name',
+			'order' => 'ASC',
+			'start' => 0,
+			'limit' => $setting['limit']
+		);
+
+		$results = $this->model_catalog_product->getProductSpecials($data);
+
 		foreach ($results as $result) {
 			if ($result['image']) {
 				$image = $this->model_tool_image->resize($result['image'], $setting['image_width'], $setting['image_height']);
 			} else {
 				$image = false;
 			}
-			
+
 			if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {
 				$price = $this->currency->format($this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax')));
 			} else {
 				$price = false;
 			}
 					
-			if ((float)$result['special']) {
+			if ((float)$result['special']) { 
 				$special = $this->currency->format($this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax')));
 			} else {
 				$special = false;
-			}	
+			}
 			
 			if ($this->config->get('config_review_status')) {
 				$rating = $result['rating'];
 			} else {
 				$rating = false;
 			}
-							
+			
 			$this->data['products'][] = array(
 				'product_id' => $result['product_id'],
 				'thumb'   	 => $image,
@@ -59,13 +59,13 @@ class ControllerModuleBestSeller extends Controller {
 			);
 		}
 
-		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/module/bestseller.tpl')) {
-			$this->template = $this->config->get('config_template') . '/template/module/bestseller.tpl';
+		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/module/special.tpl')) {
+			$this->template = $this->config->get('config_template') . '/template/module/special.tpl';
 		} else {
-			$this->template = 'default/template/module/bestseller.tpl';
+			$this->template = 'default/template/module/special.tpl';
 		}
 
-		global $aFolder; include($aFolder.'/controller/module/magictoolbox/boxes.inc');
+		$this->render();
 	}
 }
 ?>

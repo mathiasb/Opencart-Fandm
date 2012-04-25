@@ -1,12 +1,5 @@
 <?php 
-global $aFolder;
-                        if (!defined('HTTP_ADMIN')) define('HTTP_ADMIN','admin');
-						$aFolder = preg_replace('/.*\/([^\/].*)\//is','$1',HTTP_ADMIN);
-						if (!isset($GLOBALS['magictoolbox']['magicslideshow']) && !isset($GLOBALS['magicslideshow_module_loaded'])) {
-                            //include $aFolder.'/controller/module/magictoolbox/module.php'; 
-                            include (preg_match("/components\/com_ayelshop\/opencart\//ims",__FILE__)?'components/com_ayelshop/opencart/':'').$aFolder.'/controller/module/magictoolbox/module.php';
-                        };
-                        class ControllerProductCategory extends Controller {  
+class ControllerProductCategory extends Controller {  
 	public function index() { 
 		$this->language->load('product/category');
 		
@@ -355,7 +348,7 @@ global $aFolder;
 				'common/header'
 			);
 				
-			$this->response->setOutput(magicslideshow($this->render(TRUE),$this,'category', $results), $this->config->get('config_compression'));										
+			$this->response->setOutput($this->render());										
     	} else {
 			$url = '';
 			
