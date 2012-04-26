@@ -39,7 +39,7 @@
 		if($page == "common/home" || $page==''):
   ?>
   	  <?php if ($logo): ?>
-            <h1 id="logo"><a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" /><span><?php echo $name; ?></span></a></h1>
+            <h1 id="logo"><a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" /></a></h1>
       <?php else: ?>
             <h1><a href="<?php echo $home; ?>"><?php echo $name; ?></a></h1>
       <?php endif; ?>
